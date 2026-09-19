@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/073f65d684.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'style.css' %}">    
+</head>
+    <body class="about-page">
+     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #111936;">
+        <a class="navbar-brand title text-white" href="{% url 'home' %}" >ELECTROPLUM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto mr-5">
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" id="tag" href="{% url 'aboutus' %}">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" id="tag" href="{% url 'contactus' %}">Contact Us</a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+                <a class="nav-link text-white" id="tag" href="{% url 'newlogin' %}">Log In</a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+<section class="page-header">
+    <div class="wrap page-header-inner">
+        <div class="kicker">    About Electroplum </div>
+        <h1>Built by tradespeople,run like a technology company</h1>
+        <p> We started as three electricians tired of no-shows and vague quotes. Today we're a licensed network of technicians across Hyderabad, still holding the same standard.</p>
+    </div>
+</section>
+<div class="wrap">
+    <section class="section">
+        <div class="story-grid">
+            <div class="story-photo" style="background-image:url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80');" >
+            </div>
+            <div class="story-copy">
+                <div class="kicker-small">     OUR STORY </div>
+                <h2> We got tired of the four-hour  arrival window too </h2>
+                <p>Electroplum began in 2019 when our founder, an electrician by trade, kept hearing the same complaint from customers: technicians who didn't show up, quoted one price and charged another, or disappeared halfway through a job.</p>
+                <p>So we built the company we wished existed — technicians who are actually licensedand background-checked, pricing that's confirmed before any work starts, and a booking system that tells you when someone's coming instead of a vague "sometime today." </p>
+                <p> What started with three electricians and a shared spreadsheet is now a network of vetted plumbing, electrical and HVAC technicians serving homes and businesses across the city.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section values-section">
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="switch"></div>
+                <h3> Show up on time</h3>
+                <p>  We give a two-hour window, not a day-long guess, and we message you when the technician is on the way.</p>
+            </div>
+            <div class="value-card">
+                <div class="switch"></div>
+                <h3>Price it upfront</h3>
+                <p>You approve the cost before work starts.No surprise line items once the job isalready half done.
+                </p>
+            </div>
+            <div class="value-card">
+                <div class="switch"></div>
+                <h3>
+                    Stand behind the work
+                </h3>
+                <p>
+                    Every job carries a 12-month workmanship
+                    guarantee — if something's off, we come
+                    back and fix it.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+    <section class="cta-section">
+        <div class="cta-band">
+            <h2>
+                Want to see the standard for yourself?
+            </h2>
+            <div class="cta-buttons">
+                <a
+                    class="btn btn-lg btn-ink"
+                    href="{% url 'exploreus' %}"
+                >
+                    Book a service
+                </a>
+                <a
+                    class="btn btn-lg btn-outline"
+                    href="{% url 'ourwork' %}"
+                >
+                    See our work
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+<footer>
+    <div class="wrap">
+        <div class="footer-grid">
+            <div>
+                <div class="logo footer-logo">
+                    <span class="logo-mark">
+                        E
+                    </span>
+                    Electroplum
+                </div>
+                <p class="footer-description">
+                    Licensed electrical, plumbing and HVAC
+                    technicians, booked online and on call
+                    24/7.
+                </p>
+            </div>
+            <div>
+                <h4>
+                    Services
+                </h4>
+                <a href="{% url 'home' %}#services">
+                    Electrical
+                </a>
+                <a href="{% url 'home' %}#services">
+                    Plumbing
+                </a>
+                <a href="{% url 'home' %}#services">
+                    HVAC
+                </a>
+            </div>
+            <div>
+                <h4>
+                    Company
+                </h4>
+                <a href="{% url 'aboutus' %}">
+                    About us
+                </a>
+                <a href="{% url 'home' %}#work">
+                    Our work
+                </a>
+                <a href="#">
+                    Careers
+                </a>
+            </div>
+            <div>
+                <h4>
+                    Support
+                </h4>
+                <a href="{% url 'contactus' %}">
+                    Contact us
+                </a>
+                <a href="{% url 'bookinghistorypage' %}">
+                    Booking history
+                </a>
+                <a href="#">
+                    Service guarantee
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>
+                © 2026 Electroplum.
+                All rights reserved.
+            </span>
+            <span>
+                Hyderabad, Telangana
+            </span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

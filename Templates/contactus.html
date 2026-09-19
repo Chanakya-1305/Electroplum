@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/073f65d684.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">  
+    <title>Electroplum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+        html,
+        body 
+        {
+            width: 100%;
+            min-height: 100%;
+        }
+        body 
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f3f0e8;
+            color: #222;
+            overflow-x: hidden;
+        }
+        .contact-page 
+        {
+            width: 100%;
+            min-height: calc(100vh - 70px);
+            background-color: #f3f0e8;
+            padding: 55px 20px 70px;
+            display: flex;
+            justify-content: center;
+        }
+        .contact-container 
+        {
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .contact-heading 
+        {
+            margin-bottom: 45px;
+            text-align: left;
+        }
+        .contact-heading h1 
+        {
+            color: #111936;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+        .contact-heading p
+         {
+            color: #666;
+            font-size: 19px;
+            line-height: 1.6;
+            max-width: 650px;
+            text-align: left;
+            margin: 0;
+        }
+        .contact-cards
+        {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .contact-card 
+        {
+            flex: 1;
+            min-height: 210px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px 25px;
+            border: 1px solid #ddd;
+            box-shadow:0 5px 18px rgba(0, 0, 0, 0.10);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.25s ease;
+        }
+        .contact-card:hover
+         {
+            transform: translateY(-5px);
+            box-shadow:0 12px 25px rgba(0, 0, 0, 0.14);
+        }
+        .contact-icon 
+        {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background-color: #e9a744;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 18px;
+        }
+        .contact-card h2 
+        {
+            color: #111936;
+            font-size: 23px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .contact-card p
+        {
+            color: #666;
+            font-size: 17px;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .contact-card a 
+        {
+            color: #111936;
+            font-size: 17px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .contact-card a:hover 
+        {
+            color: #e09a2e;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #111936;">
+        <a class="navbar-brand title text-white" href="{% url 'home' %}" >ELECTROPLUM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto mr-5">
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" id="tag" href="{% url 'aboutus' %}">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" id="tag" href="{% url 'contactus' %}">Contact Us</a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+                <a class="nav-link text-white" id="tag" href="{% url 'newlogin' %}">Log In</a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+                <a class="nav-link text-white" id="tag" href="{% url 'bookinghistorypage' %}">Booking History</a>
+            </li>
+            </ul>
+        </div>
+        </nav>
+<section class="contact-page">
+    <div class="contact-container">
+        <div class="contact-heading">
+            <p>Get in touch with us</p>
+            <h1>Talk to a real person, not a queue</h1>
+            <p>Whether it's an emergency callout, a quote, or a question about a past job, here's every way to reach us and what to expect from each.</p>
+        </div>
+        <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">    📞</div>
+                    <h2>Call Us </h2>
+                    <p>
+                        <a href="tel:+919876543210">    +91 98765 43210 </a>
+                    </p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">    ✉ </div>
+                    <h2>    Email Us</h2>
+                    <p>
+                        <a href="mailto:electroplum@gmail.com">    electroplum@gmail.com</a>
+                    </p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">    📍</div>
+                    <h2> Location </h2>
+                    <p>    Hyderabad, Telangana</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="wrap">
+        <div class="footer-grid">
+            <div>
+                <div class="logo footer-logo">
+                    <span class="logo-mark">E</span>
+                    Electroplum
+                </div>
+                <p class="footer-description"> Licensed electrical, plumbing and HVAC technicians, booked online and on call 24/7.</p>
+            </div>
+            <div>
+                <h4> Services</h4>
+                <a href="{% url 'home' %}#services">   Electrical</a>
+                <a href="{% url 'home' %}#services">  Plumbing</a>
+                <a href="{% url 'home' %}#services"> HVAC</a>
+            </div>
+            <div>
+                <h4>   Company</h4>
+                <a href="{% url 'aboutus' %}">  About us</a>
+                <a href="{% url 'home' %}#work">  Our work</a>
+                <a href="#">   Career </a>
+            </div>
+            <div>
+                <h4>    Support</h4>
+                <a href="{% url 'contactus' %}">  Contact us</a>
+                <a href="{% url 'bookinghistorypage' %}">   Booking history</a>
+                <a href="#">   Service guarantee </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span> © 2026 Electroplum. All rights reserved.</span>
+            <span>   Hyderabad, Telangana</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

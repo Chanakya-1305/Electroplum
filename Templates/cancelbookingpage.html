@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+            <script src="https://kit.fontawesome.com/073f65d684.js" crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="{% static 'style.css' %}">    
+    </head>
+    <body>
+         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #111936;">
+          <a class="navbar-brand title text-white" href="{% url 'home' %}" >ELECTROPLUM</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto mr-5">
+              <li class="nav-item active">
+                <a class="nav-link text-white" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" id="tag" href="{% url 'aboutus' %}">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" id="tag" href="{% url 'contactus' %}">Contact Us</a>
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                  <a class="nav-link text-white" id="tag" href="{% url 'bookinghistorypage' %}">Booking History</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="container mt-5">
+            <div class="card p-4">
+                <h3>Cancel Booking</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    <label>Reason</label>
+                    <select name="reason" class="form-control">
+                        <option>Booked by mistake</option>
+                        <option>Issue resolved</option>
+                        <option>Worker not responding</option>
+                        <option>Found another service</option>
+                        <option>Other</option>
+                    </select>
+                    <br>
+                    <button class="btn btn-danger">Cancel Booking</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

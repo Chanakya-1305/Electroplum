@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://kit.fontawesome.com/073f65d684.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">    
+    <style>
+        body
+        {
+            background-color:#f5f5f5;
+        }
+        .main-page
+        {
+            width:500px;
+            background:#fff;
+            border:1px solid #ccc;
+            border-radius:8px;
+            padding:35px;
+            margin-top:30px;
+            margin-bottom:30px;
+            box-shadow:0px 4px 10px rgba(0,0,0,0.2);
+        }
+        .main-page h2
+        {
+            text-align:center;
+            font-weight:bold;
+        }
+        .main-page p
+        {
+            text-align:center;
+            color:gray;
+            margin-bottom:25px;
+        }
+        label
+        {
+            font-weight:500;
+            margin-top:10px;
+        }
+        input,
+        select,
+        textarea
+        {
+            width:100%;
+            padding:8px;
+            border:1px solid #999;
+            border-radius:4px;
+            margin-bottom:12px;
+        }
+        textarea
+        {
+            resize:none;
+        }
+        .btn-register
+        {
+            width:120px;
+            background:#20a7db;
+            color:white;
+        }
+        .btn-register:hover
+        {
+            background:#1789b4;
+            color:white;
+        }
+        .btn-reset
+        {
+            width:120px;
+            background:#343a40;
+            color:white;
+        }
+        .btn-reset:hover
+        {
+            color:white;
+        }
+        .field-error
+        {
+            color:#dc3545;
+            font-size:14px;
+            margin-top:-8px;
+            margin-bottom:12px;
+        }
+        .input-error
+        {
+            border-color:#dc3545;
+        }
+    </style>
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #111936;">
+    <a class="navbar-brand text-white font-weight-bold" href="{% url 'home' %}"> ELECTROPLUM </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto mr-5">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'home' %}">
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'aboutus' %}">
+                    About Us
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'contactus' %}">
+                    Contact Us
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" id="tag" href="{% url 'newlogin' %}">
+                    Log In
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="main-page">
+            <h2>Employee Registration</h2>
+            <p>Register as a Service Provider</p>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags|default:'info' }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <form method="POST" action="{% url 'employeeregistration' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label>Full Name</label>
+                <input type="text"  name="name"   placeholder="Enter Full Name" value="{{ form_data.name|default:'' }}" required>
+                <label>Email</label>
+                <input type="email"  name="email"  placeholder="Enter Email"  value="{{ form_data.email|default:'' }}"  class="{% if email_error %}input-error{% endif %}" required>
+                {% if email_error %}
+                    <div class="field-error">{{ email_error }}</div>
+                {% endif %}
+                <label>Category</label>
+                <select name="category" required>
+                    <option value="" {% if not form_data.category %}selected{% endif %}>Select Category</option>
+                    <option value="AC" {% if form_data.category == 'AC' %}selected{% endif %}>AC Service</option>
+                    <option value="PLUMBER" {% if form_data.category == 'PLUMBER' %}selected{% endif %}>Plumber Service</option>
+                    <option value="ELECTRICAL" {% if form_data.category == 'ELECTRICAL' %}selected{% endif %}>Electrical Service</option>
+                    <option value="INVERTER" {% if form_data.category == 'INVERTER' %}selected{% endif %}>Inverter Service</option>
+                </select>
+                <label>Experience (Years)</label>
+                <input type="number" name="experience" placeholder="Enter Experience" value="{{ form_data.experience|default:'' }}" required>
+                <label>Contact Number</label>
+                <input type="tel" name="contact" placeholder="Enter Mobile Number" maxlength="10" value="{{ form_data.contact|default:'' }}" required>
+                <label>Address</label>
+                <textarea name="address" rows="3" placeholder="Enter Address" required>{{ form_data.address|default:'' }}</textarea>
+                <label>Upload Profile Photo</label>
+                <input type="file" name="photo" accept="image/*" class="form-control-file" required>
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter Password" required>
+                <label>Confirm Password</label>
+                <input type="password" name="confirm_password" placeholder="Re-enter Password" required>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-register"> Register</button>
+                    <button type="reset" class="btn btn-reset ml-2">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
