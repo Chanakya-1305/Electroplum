@@ -39,7 +39,7 @@ body {
     font-family: "Open Sans", sans-serif;
     overflow-x: hidden;
 }
-body:not(.home-page):not(.about-page):not(.page-with-sticky-navbar) {
+body:not(.home-page):not(.page-with-sticky-navbar) {
     padding-top: 70px;
 }
 .custom-navbar {
@@ -1047,6 +1047,55 @@ a {
 }
 
 @media (max-width: 768px) {
+    .banner-section {
+        min-height: auto;
+        padding: 48px 20px 42px;
+    }
+
+    .banner-title {
+        font-size: 38px;
+        letter-spacing: 0;
+    }
+
+    .banner-buttons,
+    .banner-stats {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .banner-btn {
+        width: 100%;
+    }
+
+    .booking-section,
+    .cta-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .booking-steps {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .booking-step:nth-child(2) {
+        border-right: none;
+    }
+
+    .booking-step:nth-child(-n+2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .cta-box {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 22px;
+        padding: 26px 22px;
+    }
+
+    .cta-buttons {
+        flex-wrap: wrap;
+    }
+
     .page-header {
         padding: 64px 20px 72px;
     }
